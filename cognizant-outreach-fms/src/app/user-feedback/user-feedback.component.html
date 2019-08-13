@@ -1,0 +1,240 @@
+<app-header></app-header>
+<div *ngIf="!isFeedbackSubmitted" class="app-container">
+  <div class="text-center title">
+    <h1 class="title-text ceo-quote">
+      Let's share our experience to inspire others and improve the outreach!
+    </h1>
+  </div>
+  <div *ngIf="isType == 'Participated'">
+    <div class="app-container theme">
+      <div class="row">
+        <div class="col-lg-4 col-md-4 col-sm-4">
+          <mat-card class="quote">
+            <h1>Event Date:
+              <span class="normal-quote">{{actualDate | date:'longDate'}}.</span>
+            </h1>
+          </mat-card>
+        </div>
+        <div class="col-lg-8 col-md-8 col-sm-8">
+          <mat-card class="quote">
+            <h1>Event Description:
+              <span class="normal-quote">{{userFeedback?.EventName}}!</span>
+            </h1>
+          </mat-card>
+        </div>
+      </div>
+      <div class="row quote spacing">
+        <div class="col-lg-6 col-md-6 col-sm-6">
+          <h1>Please share your feedback for the above event.</h1>
+          <p>
+            <mat-button-toggle-group name="fontStyle" aria-label="Font Style" #group="matButtonToggleGroup" (change)="isSelected(group.value)">
+              <mat-button-toggle value="5">
+                <mat-icon matSuffix class="icon-size very-good">favorite</mat-icon>
+              </mat-button-toggle>
+              <mat-button-toggle value="4">
+                <mat-icon matSuffix class="icon-size good">sentiment_very_satisfied</mat-icon>
+              </mat-button-toggle>
+              <mat-button-toggle value="3">
+                <mat-icon matSuffix class="icon-size netural">sentiment_neutral</mat-icon>
+              </mat-button-toggle>
+              <mat-button-toggle value="2">
+                <mat-icon matSuffix class="icon-size not-bad">mood_bad</mat-icon>
+              </mat-button-toggle>
+              <mat-button-toggle value="1">
+                <mat-icon matSuffix class="icon-size bad">sentiment_very_dissatisfied</mat-icon>
+              </mat-button-toggle>
+            </mat-button-toggle-group>            
+          </p>
+          <!-- <span class="example-selected-value">Selected value: <i class="normal-quote">{{selectedValue}}</i></span> -->
+          <h1>Okay, How do you want us to improve the program?</h1>
+          <p>
+            <mat-form-field>
+              <textarea #improve matInput maxlength=150></textarea>
+            </mat-form-field>            
+          </p>
+          <h1>Cool! What's your story and Why don't you share with us?</h1>
+          <p>
+            <mat-form-field>
+              <textarea #story class="auto-resize" matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize"
+                cdkAutosizeMinRows="2" cdkAutosizeMaxRows="5"></textarea>
+            </mat-form-field>            
+          </p>
+          <h1>What Next? you can upload your event picture to be shown next!</h1>
+          <p>
+            <mat-form-field class="example-full-width">
+              <input matInput readonly>
+              <input hidden type="file" #fileInput>
+              <mat-icon (click)="fileInput.click()" matSuffix>attachment</mat-icon>
+            </mat-form-field>
+          </p>
+          <div *ngIf="message != ''" class="text-center title">
+            <h2 class="ceo-quote">{{message}}</h2>
+          </div>
+          <div class="center-align">
+            <button mat-raised-button color="primary" (click)="participatedUser(group.value, story.value, improve.value)">I'm done and let me Submit</button>
+          </div>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-6 section-splitter">
+          <h1>You know, It would be great if you share event picture with us!</h1>
+          <div class="event-upload">
+            <img class="upload-image" alt="ceo-thought" src="../assets/cognizant-outreach.jpg">
+          </div>
+        </div>
+      </div>
+      <div class="row spacing">
+        <div class="col-lg-12 col-md-12 col-sm-12">
+          <mat-card class="quote">
+            <h1>Be The Change:
+              <span class="normal-quote">Thanks for sharing the feedback with us! We will share the top and most insipring story in the
+                <a>BeCognizant</a>
+                <mat-icon matSuffix class="thump-up">thumb_up</mat-icon>
+              </span>
+            </h1>
+          </mat-card>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="isType == 'Notparticipated'">
+    <div class="app-container theme">
+      <div class="row">
+        <div class="col-lg-4 col-md-4 col-sm-4">
+          <mat-card class="quote">
+            <h1>Event Date:
+              <span class="normal-quote">{{actualDate | date:'longDate'}}.</span>
+            </h1>
+          </mat-card>
+        </div>
+        <div class="col-lg-8 col-md-8 col-sm-8">
+          <mat-card class="quote">
+            <h1>Event Description:
+              <span class="normal-quote">{{userFeedback?.EventName}}!</span>
+            </h1>
+          </mat-card>
+        </div>
+      </div>
+      <div class="row quote spacing">
+        <div class="col-lg-6 col-md-6 col-sm-6">
+          <h1>We understand that you missed out the last registered event!</h1>
+          <p> </p>
+          <h1>Okay, Do you think is there any area of improvement?</h1>
+          <p>
+            <mat-form-field>
+              <textarea #impovement class="auto-resize" matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="2"
+                cdkAutosizeMaxRows="5"></textarea>
+            </mat-form-field>
+          </p>
+          <h1>Cool! You can checkout below and mark the appropriate one!</h1>
+          <br>
+          <mat-radio-group layout="coloumn" aria-label="Select an option" [(ngModel)]="reasonToUnregister" (change)="rest($event)">
+            <mat-radio-button class="example-radio-button" *ngFor="let reasonToUnregister of reasons" [value]="reasonToUnregister">
+              {{reasonToUnregister}}
+            </mat-radio-button>
+          </mat-radio-group>
+          <mat-form-field>
+            <input matInput readonly>
+          </mat-form-field>
+          <div *ngIf="message != ''" class="text-center title">
+            <h2 class="ceo-quote">{{message}}</h2>
+          </div>
+          <div class="center-align">
+            <button mat-raised-button color="primary" (click)="notAttended(impovement.value, reasonToUnregister)">I'm done and let me Submit</button>
+          </div>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-6 section-splitter">
+          <h1>You know, It would be great if you share event picture with us!</h1>
+          <div class="event-upload">
+            <img class="upload-image" alt="ceo-thought" src="../assets/cognizant-outreach.jpg">
+          </div>
+        </div>
+      </div>
+      <div class="row spacing">
+        <div class="col-lg-12 col-md-12 col-sm-12">
+          <mat-card class="quote">
+            <h1>Be The Change:
+              <span class="normal-quote">Thanks for sharing the feedback with us! We will check and Our mission is to ensure
+                <a>100% Participation</a>
+                <mat-icon matSuffix class="thump-up">thumb_up</mat-icon>
+              </span>
+            </h1>
+          </mat-card>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="isType == 'Unregistered'">
+    <div class="app-container theme">
+      <div class="row">
+        <div class="col-lg-4 col-md-4 col-sm-4">
+          <mat-card class="quote">
+            <h1>Event Date:
+              <span class="normal-quote">{{actualDate | date:'longDate'}}.</span>
+            </h1>
+          </mat-card>
+        </div>
+        <div class="col-lg-8 col-md-8 col-sm-8">
+          <mat-card class="quote">
+            <h1>Event Description:
+              <span class="normal-quote">{{userFeedback?.EventName}}!</span>
+            </h1>
+          </mat-card>
+        </div>
+      </div>
+      <div class="row quote spacing">
+        <div class="col-lg-6 col-md-6 col-sm-6">
+          <h1>We understand that you unregistered for the event due to .......!</h1>
+          <p> </p>
+          <h1>Okay, Do you think is there any area of improvement?</h1>
+          <p>
+            <mat-form-field>
+              <textarea #improve class="auto-resize" matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="2"
+                cdkAutosizeMaxRows="5"></textarea>
+            </mat-form-field>
+          </p>
+          <h1>Cool! You can checkout below and mark the appropriate one!</h1>
+          <br>
+          <mat-radio-group layout="coloumn" aria-label="Select an option" [(ngModel)]="reasonToUnregister" (change)="rest($event)">
+            <mat-radio-button class="example-radio-button" *ngFor="let reasonToUnregister of reasons" [value]="reasonToUnregister">
+              {{reasonToUnregister}}
+            </mat-radio-button>
+          </mat-radio-group>
+          <mat-form-field>
+            <input matInput readonly>
+          </mat-form-field>
+          <div *ngIf="message != ''" class="text-center title">
+            <h2 class="ceo-quote">{{message}}</h2>
+          </div>
+          <div class="center-align">
+            <button mat-raised-button color="primary" (click)="notAttended(improve.value, reasonToUnregister)">I'm done and let me Submit</button>
+          </div>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-6 section-splitter">
+          <h1>You know, It would be great if you share event picture with us!</h1>
+          <div class="event-upload">
+            <img class="upload-image" alt="ceo-thought" src="../assets/cognizant-outreach.jpg">
+          </div>
+        </div>
+      </div>
+      <div class="row spacing">
+        <div class="col-lg-12 col-md-12 col-sm-12">
+          <mat-card class="quote">
+            <h1>Be The Change:
+              <span class="normal-quote">Thanks for sharing the feedback with us! We will check and Our mission is to ensure
+                <a>100% Participation</a>
+                <mat-icon matSuffix class="thump-up">thumb_up</mat-icon>
+              </span>
+            </h1>
+          </mat-card>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="isFeedbackSubmitted" class="empty-container">
+  <div class="text-center title">
+    <h1 class="title-text ceo-quote">
+      {{message}}
+    </h1>
+  </div>
+</div>
+<app-footer></app-footer>

@@ -1,0 +1,139 @@
+<app-header></app-header>
+<div class="app-container">
+  <div class="row">
+    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 left-section">
+      <div class="text-center quote">
+        <h2 class="quote-fit">
+          “If your actions inspire others to dream more, learn more, do more and become more, you are a leader.”
+        </h2>
+        <h2> ― John Quincy Adams</h2>
+      </div>
+      <img class="fit-image" alt="ceo-thought" src="../assets/ceo-view.jpg">
+      <div class="text-center ceo-quote-fit">
+        <h2>
+          “I'm proud to recognize that all of you deliver outcomes that matter not only to our clients but also to society. I'm moved
+          by the extraordinary work of Cognizant Foundation and Outreach, both of which are pursuing excellence in service
+          to others.”
+        </h2>
+        <h2> ― Francisco D’Souza, CEO, Cognizant.</h2>
+      </div>
+    </div>
+    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8 right-section">
+      <video #teaser autoplay poster="" loop="" muted class="fit-page">
+        <source src="../assets/outreach-teaser.mp4" type="video/mp4">
+      </video>
+      <!-- <button class="outreach-play" [style.display]="isPlay ? 'none' : 'inline' " (click)="startPlay()">
+          <div class="play-button"></div>
+        </button> -->
+    </div>
+  </div>
+  <div class="text-center quote">
+    <h1>
+      <b>Forbes:</b> Cognizant Outreach Works Because it has the Attention of the Company’s Top Management!</h1>
+  </div>
+  <div>
+    <div class="row">
+      <div class="text-center ceo-quote">
+        <h2 class="ml-2 mr-2">“What sets Cognizant apart is the quality, the character and the dedication of our employees. Our purpose, our values,
+          our passion for volunteerism are just as important to us as the solutions and services we provide to our clients.
+          Outreach will continue to drive human betterment into everything that we do as a company.”</h2>
+        <h2> ― Francisco D’Souza, CEO, Cognizant.</h2>
+      </div>      
+    </div>
+  </div>
+  <div #thankCard>
+      <hr  class="line ">
+      <div class="col-lg-12 col-md-12 col-sm-12 thank-card">
+        <mat-card class="text-center quote">
+          <h1 >Happy Volunteering! Let's continue our good work to change the society, If not us who? If not now when?
+            <mat-icon matSuffix class="thump-up normal-quote">pan_tool</mat-icon>
+          </h1>
+        </mat-card>
+      </div>
+      <div id="our-new-ceo" class="row">
+        <div class="col-lg-8 col-md-8 col-sm-8 right-section">
+          <!-- <iframe allowfullscreen="" allow="autoplay" muted controls="controls" height="100%" width="100%" src="../assets/embedded"></iframe> -->
+          <video #teaser1 autoplay poster="" loop="" muted class="fit-page">
+              <source *ngIf='!thankPage' src="../assets/25th-years-journey.mp4" type="video/mp4">
+              <source *ngIf='thankPage' src="../assets/humanity-animated-teaser.mp4" type="video/mp4">
+          </video>
+          <!-- <div id="outreach-memories" class="carousel slide fit-page" data-ride="carousel" >       
+            <ul class="carousel-indicators">
+              <li data-target="#outreach-memories" data-slide-to="0" class="active"></li>
+              <li data-target="#outreach-memories" data-slide-to="1"></li>
+              <li data-target="#outreach-memories" data-slide-to="2"></li>
+              <li data-target="#outreach-memories" data-slide-to="3"></li>
+              <li data-target="#outreach-memories" data-slide-to="4"></li>
+            </ul>
+          
+            <div class="carousel-inner">
+              <div class="carousel-item ">
+                <img src="../assets/outreach-memories/agriculture.jpg" alt="Los Angeles" height="710">
+              </div>          
+              <div class="carousel-item " >
+                <img src="../assets/outreach-memories/digital-education.jpg" alt="New York"  height="710">
+              </div>
+              <div class="carousel-item">
+                <img src="../assets/outreach-memories/people-connect.jpg" alt="Los Angeles" height="710">
+              </div>
+              <div class="carousel-item">
+                <img src="../assets/outreach-memories/group-study.jpg" alt="Los Angeles" height="710">
+              </div>          
+              <div class="carousel-item active">
+                <img src="../assets/outreach-memories/digital-education1.jpg" alt="Los Angeles" height="710">
+              </div>
+              
+            </div>
+          </div> -->
+          <!-- <div class="fit-page">
+              <img src="../assets/outreach-memories/digital-education1.jpg" alt="Los Angeles" width="100%" height="710">
+          </div> -->
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-4 left-section">
+          <div class="text-center quote">
+            <h2 class="quote-fit">
+              “Great dreams of great leaders are always transcended! Dream is not that which you see while sleeping it is something that
+              does not let you sleep.”
+            </h2>
+            <h2> ― A.P.J. Abdul Kalam</h2>
+          </div>
+          <img class="fit-image" alt="ceo-thought" src="../assets/our_new_ceo.jpg">
+          <div class="text-center ceo-quote-fit">
+            <h2>
+              “If i look as where we stand, Cognizant has a role to play not just for our customers and clients in the vertical stuff that
+              we serve very well around the world. Cognizant also has a role to play for society at large! I think we can do
+              well by really doing good things.”
+            </h2>
+            <h2> ― Brian Humphries, CEO, Cognizant.</h2>
+          </div>
+        </div>
+      </div>
+      <!-- <div class="text-center quote">
+          <h1>
+            Yep! Let's work together to ensure our role to play for society at large!
+          </h1>
+        </div>
+      <div> -->
+      <!-- <div>
+        <div class="row">
+            <div class="text-center ceo-quote">
+              <h2 class="ml-2 mr-2">“A warm welcome to our Outreach Family! 
+                As your wish, we are committed to play our role to change the society with our Volunteerism spirit of doing good things.
+                We would like to have your support for the same as like Frank did for us.”</h2>
+              <h2> ― Outreach, Cognizant.</h2>
+            </div>
+        </div>
+      </div> -->
+      <div class="col-lg-12 col-md-12 col-sm-12 thank-card">
+        <mat-card class="quote">
+          <h1>Be The Change:
+            <span class="normal-quote">The Purity of happiness is when you give something, rather than getting something!
+              <a>Make The Difference</a>
+              <mat-icon matSuffix class="thump-up">spa</mat-icon>
+            </span>
+          </h1>
+        </mat-card>
+      </div>
+  </div> 
+</div>
+<app-footer></app-footer>

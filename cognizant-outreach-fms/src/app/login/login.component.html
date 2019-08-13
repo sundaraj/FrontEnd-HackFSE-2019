@@ -1,0 +1,31 @@
+<div class="container">
+    <div class="app-login-section1"></div>
+    <div class="row">
+      <div class="col-lg-6 col-md-6 col-sm-6 app-login-section2"></div>
+      <div class="col-lg-6 col-md-6 col-sm-6 app-login-section3"></div>
+    </div>
+</div>
+<form class="example-form">
+  <div class="login-container">
+    <div class="login-page">
+      <div class="login">
+        <img class="outreach-logo" src="../assets/logo-transparent.png">
+        <mat-form-field class="example-full-width">
+          <input #userName matInput placeholder="Employee Id or Email" autocomplete="off" maxlength="6">
+          <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+            Please enter a valid email address
+          </mat-error>
+          <mat-error *ngIf="emailFormControl.hasError('required')">
+              Email is <strong>required!</strong>
+          </mat-error>                 
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+            <input #password matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'" autocomplete="off">
+            <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </mat-form-field>
+        <span class="error-message" *ngIf="isError">Ahh! You missed something! Please try again.</span>
+        <button mat-button (click)="getIn(userName.value, password.value)">Let's Get in <mat-icon matSuffix>favorite</mat-icon></button>
+      </div>
+    </div>
+  </div>
+</form>

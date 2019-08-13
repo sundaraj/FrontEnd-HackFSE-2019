@@ -1,0 +1,30 @@
+<nav class="app-nav">
+  <a aria-label="Cognizant Outreach" class="docs-button mat-button" mat-button="" routerlink="/" tabindex="0" aria-disabled="false" href="/home">
+    <span class="mat-button-wrapper">
+      <img alt="outreach" src="../assets/logo.png">   
+      <span class="brand-text">Feedback Management System</span>   
+    </span>       
+  </a>
+  <a aria-label="Cognizant Outreach" *ngIf="userInfo?.Role === 'Associate'" class="docs-button mat-button" mat-button="" routerlink="/" tabindex="0" aria-disabled="false" href="/feedback">
+    <span class="mat-button-wrapper">
+        <span class="brand-text">Volunteer Feedback</span>         
+    </span>       
+  </a>
+  <a aria-label="Cognizant Outreach" *ngIf="userInfo?.Role !== 'Associate'" class="docs-button mat-button" mat-button="" routerlink="/" tabindex="0" aria-disabled="false" href="/dashboard">
+    <span class="mat-button-wrapper">
+        <span class="brand-text">Dashboard</span>         
+    </span>       
+  </a>
+  <div class="flex-spacer"></div>   
+  <a aria-label="Cognizant Outreach" class="docs-button mat-button" mat-button="" routerlink="/" tabindex="0" aria-disabled="false" href="/Memories">
+    <span class="mat-button-wrapper">
+        <span class="brand-text">Outreach Memories</span>         
+    </span>       
+  </a>
+  <img alt="user" class="user-profile" src="../assets/user.png">    
+  <button mat-button [matMenuTriggerFor]="menu">{{userInfo?.Role | uppercase}}</button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item (click)="UserAction()">User Profile</button>
+    <button mat-menu-item (click)="getOut()">Logout</button>
+  </mat-menu>    
+</nav>

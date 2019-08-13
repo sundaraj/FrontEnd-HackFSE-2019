@@ -1,0 +1,70 @@
+.example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+  }
+  
+  .example-full-width {
+    width: 100%;
+  }
+
+  .example-right-align {
+    text-align: right;
+  }
+  
+  input.example-right-align::-webkit-outer-spin-button,
+  input.example-right-align::-webkit-inner-spin-button {
+    display: none;
+  }
+  
+  input.example-right-align {
+    -moz-appearance: textfield;
+  }
+
+  /* Responsiveness definition */
+@media only screen and (max-width: 1440px) {
+  .app-login-section1 {
+    height: 375px;
+  }
+  .app-login-section2 {
+    height: 414px;
+  }
+  .app-login-section3 {
+    height: 414px;
+  }   
+  .outreach-logo    {
+    width: 175px;
+  }
+  .login {
+    padding: 33px;
+    max-width: 400px;
+  }
+}
+
+@media only screen and (max-width: 1366px) {
+  .app-login-section1 {
+    height: 355px;
+  }
+  .app-login-section2 {
+    height: 302px;
+  }
+  .app-login-section3 {
+    height: 302px;
+  }   
+  .outreach-logo    {
+    width: 142px;
+  }
+  .login {
+    min-height: 0px;
+    margin-bottom: 10px;
+    padding: 26px;
+  }
+  .error-message {
+    font-size: 14px;
+  }
+  .example-full-width {
+    font-size: 10px !important;
+    line-height: 1 !important; 
+  }
+}
+

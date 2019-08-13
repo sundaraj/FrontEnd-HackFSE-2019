@@ -1,0 +1,340 @@
+<app-header></app-header>
+<div class="app-container">
+ <div *ngIf="isLoad" class="loding-indicator">
+    <div class="align-center">
+        <mat-spinner style="margin:0 auto;"></mat-spinner>
+    </div>    
+ </div>
+  <div class="text-center title">
+    <h1 class="title-text">
+      One platform to monitor all the outreach activities!
+    </h1>
+  </div>
+  <div>
+    <h1 class="admin-title ceo-quote">Reports and Dashboard.</h1>
+    <div class="app-container theme">
+      <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12">
+          <mat-card *ngIf="isType == 'Feedback'" class="quote">
+            <h1>Feedback:
+              <span class="normal-quote">Consolidated Volunteer Ratings For The Event & Graphical Representation of Performance! <a>Moving from “I” to “We”</a>
+                <mat-icon matSuffix class="thump-up">directions_walk</mat-icon>
+              </span>              
+            </h1>
+          </mat-card>
+          <mat-card *ngIf="isType == 'Participated'" class="quote">
+              <h1>Participated:
+                <span class="normal-quote">The Top Five Business Unit Volunteerism Impact & Respective Council Volunteer hours. <a>Moving from “I” to “We”</a> 
+                  <mat-icon matSuffix class="thump-up">directions_walk</mat-icon>   
+                </span>          
+              </h1>
+          </mat-card>
+        </div>       
+      </div>
+      <div *ngIf="isType == 'Feedback'" class="row quote spacing">
+        <div class="col-lg-6 col-md-6 col-sm-6">
+          <app-doughnut-chart *ngIf="isSuccess" [chartLabel]="dcLabels" [chartData]="dcData"></app-doughnut-chart>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-6 section-splitter">
+          <app-bar-chart *ngIf="isSuccess" [barChartLabels]="bcLabels" [barchartData1]="bcData" [barchartLabel1]="bcLabel1" [barchartData2]="bcData1" [barchartLabel2]="bcLabel2"></app-bar-chart>
+        </div>
+      </div>
+      <div *ngIf="isType == 'Participated'" class="row quote spacing">
+        <div class="col-lg-6 col-md-6 col-sm-6">
+            <app-pie-chart *ngIf="isSuccess" [chartLabel]="dcLabels" [chartData]="dcData"></app-pie-chart>                             
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-6 section-splitter">
+            <app-bar-chart *ngIf="isSuccess" [barChartLabels]="bcLabels" [barchartData1]="bcData" [barchartLabel1]="bcLabel1" [barchartData2]="bcData1" [barchartLabel2]="bcLabel2"></app-bar-chart>            
+        </div>
+      </div>
+      <!-- <div *ngIf="isType == 'Not Participated'" else  class="row quote spacing">
+          <div class="col-lg-6 col-md-6 col-sm-6 section-splitter">
+              <app-radar-chart *ngIf="isSuccess" ></app-radar-chart>
+            </div>
+          <div class="col-lg-6 col-md-6 col-sm-6">
+            <app-pie-chart *ngIf="isSuccess" [chartLabel]="dcLabels" [chartData]="dcData"></app-pie-chart>         
+          </div>          
+      </div> -->
+      <br>          
+      <div class="row quote" [ngClass]="isType == 'Feedback' || isType == 'Participated' ? 'spacing' : ''">
+        <div class="col-lg-2 col-md-2 col-sm-2">
+          <div class="left-panel">
+            <mat-selection-list #users (selectionChange)="(users.selectedOptions.selected.length > 0) ? changeState($event) : null">
+              <h1 class="pl-3">Refiner</h1>
+              <mat-list-option [selected]="user.selected" *ngFor="let user of typeOfUsers" [value]="user.name">
+                {{user.name}}
+              </mat-list-option>
+            </mat-selection-list>
+            <p class="refiner-leftNav" [ngClass]="userInfo.Role !== 'admin' ? 'itowe-container' : ''">
+              Total Count:
+              <span class="total-count">{{gridData?.length}}</span>
+            </p>            
+            <form *ngIf="userInfo.Role === 'admin'" class="example-form">
+              <h1 class="pl-3">User Privilege</h1>
+              <p class="refiner-leftNav mb-0">
+                <mat-form-field class="example-full-width">
+                  <input #eId [(ngModel)]="empId" name="empId" type="number" autocomplete="off" matInput placeholder="Employee Id" value="" (focus)="rest(eId.value)">
+                </mat-form-field>
+
+                <mat-form-field class="example-full-width">
+                  <input #role type="text" placeholder="Pick one role" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto">
+                  <mat-autocomplete #auto="matAutocomplete">
+                    <mat-option *ngFor="let option of options" [value]="option">
+                      {{option}}
+                    </mat-option>
+                  </mat-autocomplete>
+                </mat-form-field>
+              </p>
+              <div *ngIf="isError && errorMessage != ''">
+                <span class="pl-3 error-message">{{errorMessage}}</span>
+              </div>
+              <div class="refiner-btn">
+                <button mat-raised-button color="primary" (click)="setRole(role.value)">Submit</button>
+              </div>
+            </form>
+            <form *ngIf="userInfo.Role !== 'admin'" class="example-form">
+              <h1 class="pl-3">Did you know?</h1>
+              <p class="mb-0 pl-2 pr-2 normal-quotes">
+                <a aria-label="Cognizant Outreach" class="docs-button mat-button" mat-button="" routerlink="/" tabindex="0" aria-disabled="false" target="_blank" href="https://self4society.mygov.in/?post_type=editorial&p=274384&preview=true">
+                  <span class="mat-button-wrapper">
+                    <img class="itowe-logo" alt="outreach" src="../assets/iToWe_logo.jpg">                         
+                  </span>                         
+                </a>                                              
+              </p>              
+            </form>
+          </div>
+        </div>       
+        <div class="col-lg-10 col-md-10 col-sm-10">
+          <div class="row left-panel">
+            <div class="col-lg-5 col-md-5 col-sm-5">
+              <h1>Let's Improve The Outreach! </h1>                          
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4">                          
+              <mat-paginator [length]="gridData?.length" [pageSize]="10" (page)="nextPage($event)"></mat-paginator>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-3 export-btn">
+              <button mat-raised-button class="file-import" (click)="openDialog()">
+                <mat-icon matSuffix class="import-resize">play_for_work</mat-icon> File Import</button>
+              <button mat-raised-button class="excel-export" (click)="getExcelReport()">Excel Export                
+                <mat-icon matSuffix class="export-resize">launch</mat-icon>
+              </button>
+              <button *ngIf="isType != 'Feedback' && userInfo.Role === 'admin'" mat-raised-button class="send-mail" color="primary" (click)="sendEmail(element)">              
+                <mat-icon matSuffix class="export-resize">email</mat-icon>
+              </button>
+            </div>
+          </div>
+          <table *ngIf="isType == 'Feedback'" class="mat-elevation-z8" mat-table [dataSource]="dataSource" matSort (matSortChange)="sortData($event, isType)" >
+            <!--- Note that these columns can be defined in any order.
+                          The actual rendered columns are set as a property on the row definition" -->
+
+            <!-- Id Column -->
+            <ng-container matColumnDef="id">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Id </th>
+              <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+            </ng-container>
+
+            <!-- Name Column -->
+            <ng-container matColumnDef="name">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+              <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+            </ng-container>
+
+            <!-- Event Name Column -->
+            <ng-container matColumnDef="eventName">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Event Name </th>
+              <td mat-cell *matCellDef="let element"> {{element.eventName}} </td>
+            </ng-container>
+
+            <!-- Ratings Column -->
+            <ng-container matColumnDef="rating">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Ratings </th>
+              <td mat-cell *matCellDef="let element"> {{element.rating}} </td>
+            </ng-container>
+
+            <!-- Location Column -->
+            <ng-container matColumnDef="location">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Location </th>
+              <td mat-cell *matCellDef="let element"> {{element.location}} </td>
+            </ng-container>
+
+            <!-- Project Column -->
+            <ng-container matColumnDef="project">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Project </th>
+              <td mat-cell *matCellDef="let element"> {{element.project}} </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
+          <table *ngIf="isType == 'Participated'" class="mat-elevation-z8" mat-table [dataSource]="dataSource" matSort (matSortChange)="sortData($event, isType)" >
+            <!--- Note that these columns can be defined in any order.
+                          The actual rendered columns are set as a property on the row definition" -->
+
+            <!-- Id Column -->
+            <ng-container matColumnDef="id">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Id </th>
+              <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+            </ng-container>
+
+            <!-- Name Column -->
+            <ng-container matColumnDef="name">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+              <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+            </ng-container>
+
+            <!-- Event Name Column -->
+            <ng-container matColumnDef="eventName">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Event Name </th>
+              <td mat-cell *matCellDef="let element"> {{element.eventName}} </td>
+            </ng-container>
+
+            <!-- Beneficiary Name Column -->
+            <ng-container matColumnDef="beneficiary">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Beneficiary </th>
+              <td mat-cell *matCellDef="let element"> {{element.beneficiary}} </td>
+            </ng-container>
+
+            <!-- Council Name Column -->
+            <ng-container matColumnDef="councilName">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Council Name </th>
+              <td mat-cell *matCellDef="let element"> {{element.councilName}} </td>
+            </ng-container>
+
+            <!-- Business Unit Column -->
+            <ng-container matColumnDef="businessUnit">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Business Unit </th>
+              <td mat-cell *matCellDef="let element"> {{element.businessUnit}} </td>
+            </ng-container>
+
+             <!-- Send Mail Column -->
+             <ng-container matColumnDef="feedbackStatus">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Feedback Status</th>
+              <td mat-cell *matCellDef="let element">
+                  <mat-checkbox #sendMail class="example-margin" [disabled]="element.feedbackStatus == 'Feedback Submitted'" [checked]="(element.feedbackStatus == 'Feedback Submitted') ? false : true" (change)="updateItems(sendMail.checked, element)">
+                    {{element.feedbackStatus}}
+                  </mat-checkbox>                   
+              </td>
+            </ng-container>
+          
+            <tr mat-header-row *matHeaderRowDef="displayedColumns1"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns1;"></tr>
+          </table>
+          <table *ngIf="isType == 'Not Participated'" class="mat-elevation-z8" mat-table [dataSource]="dataSource" matSort (matSortChange)="sortData($event, isType)" >
+            <!--- Note that these columns can be defined in any order.
+                          The actual rendered columns are set as a property on the row definition" -->
+
+            <!-- Id Column -->
+            <ng-container matColumnDef="id">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Id </th>
+              <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+            </ng-container>          
+
+            <!-- Event Name Column -->
+            <ng-container matColumnDef="eventName">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Event Name </th>
+              <td mat-cell *matCellDef="let element"> {{element.eventName}} </td>
+            </ng-container>
+
+            <!-- Event Date Column -->
+            <ng-container matColumnDef="eventDate">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Event Date </th>
+              <td mat-cell *matCellDef="let element"> {{element.eventDate}} </td>
+            </ng-container>
+
+            <!-- Beneficiary Column -->
+            <ng-container matColumnDef="beneficiary">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Beneficiary</th>
+              <td mat-cell *matCellDef="let element"> {{element.beneficiary}} </td>
+            </ng-container>
+
+            <!-- Location Column -->
+            <ng-container matColumnDef="baselocation">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> BaseLocation </th>
+              <td mat-cell *matCellDef="let element"> {{element.baselocation}} </td>
+            </ng-container>      
+            
+            <!-- Send Mail Column -->
+            <ng-container  matColumnDef="feedbackStatus">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Feedback Status</th>
+                <td mat-cell *matCellDef="let element">
+                    <mat-checkbox #sendMail class="example-margin" [disabled]="element.feedbackStatus == 'Feedback Submitted'" [checked]="(element.feedbackStatus == 'Feedback Submitted') ? false : true" (change)="updateItems(sendMail.checked, element)">
+                      {{element.feedbackStatus}}
+                    </mat-checkbox>                   
+                </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns2"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns2;"></tr>
+          </table>
+          <table *ngIf="isType == 'Unregistered'" class="mat-elevation-z8" mat-table [dataSource]="dataSource" matSort (matSortChange)="sortData($event, isType)" >
+            <!--- Note that these columns can be defined in any order.
+                          The actual rendered columns are set as a property on the row definition" -->
+
+            <!-- Id Column -->
+            <ng-container matColumnDef="id">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Id </th>
+              <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+            </ng-container>          
+
+            <!-- Event Name Column -->
+            <ng-container matColumnDef="eventName">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Event Name </th>
+              <td mat-cell *matCellDef="let element"> {{element.eventName}} </td>
+            </ng-container>
+
+            <!-- Event Date Column -->
+            <ng-container matColumnDef="eventDate">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Event Date </th>
+              <td mat-cell *matCellDef="let element"> {{element.eventDate}} </td>
+            </ng-container>
+
+            <!-- Beneficiary Column -->
+            <ng-container matColumnDef="beneficiary">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Beneficiary</th>
+              <td mat-cell *matCellDef="let element"> {{element.beneficiary}} </td>
+            </ng-container>
+
+            <!-- Location Column -->
+            <ng-container matColumnDef="baselocation">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> BaseLocation </th>
+              <td mat-cell *matCellDef="let element"> {{element.baselocation}} </td>
+            </ng-container>
+
+            <!-- Send Mail Column -->
+            <ng-container  matColumnDef="feedbackStatus">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Feedback Status</th>
+                <td mat-cell *matCellDef="let element">
+                    <mat-checkbox #sendMail class="example-margin" [disabled]="element.feedbackStatus == 'Feedback Submitted'" [checked]="(element.feedbackStatus == 'Feedback Submitted') ? false : true" (change)="updateItems(sendMail.checked, element)">
+                      {{element.feedbackStatus}}
+                    </mat-checkbox>                   
+                </td>
+            </ng-container>
+          
+            <tr mat-header-row *matHeaderRowDef="displayedColumns2"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns2;"></tr>
+          </table>
+          <br>  
+          <div *ngIf="!isLoad && gridData?.length == 0">
+              <h2 class="admin-title ceo-quote">Cool! There is no data for this item.</h2>
+          </div> 
+          <div *ngIf="isSuccess && message != ''">
+            <h2 class="admin-title ceo-quote">{{message}}</h2>
+          </div>                
+        </div>        
+      </div>
+      <div class="row spacing">
+        <div class="col-lg-12 col-md-12 col-sm-12">
+          <mat-card class="quote">
+            <h1>Be The Change:
+              <span class="normal-quote">Thanks for making this program memorable! We will volunteer together to change the socitey
+                <a>BeCognizant</a>
+                <mat-icon matSuffix class="thump-up">thumb_up</mat-icon>
+              </span>
+            </h1>
+          </mat-card>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

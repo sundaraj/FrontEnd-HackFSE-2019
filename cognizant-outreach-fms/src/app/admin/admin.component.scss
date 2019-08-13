@@ -1,0 +1,130 @@
+.refiner-leftNav {
+    padding-top: 16px;
+    padding-left: 16px;
+}
+.total-count {
+    float: right;
+    padding-right: 20px;
+}
+.admin-title {
+    padding-left: 15px;
+    text-align: center;
+}
+table {
+    width: 100%;    
+}
+.left-panel {
+    box-shadow: 0 5px 5px -3px rgba(0,0,0,.2), 0 8px 10px 1px rgba(0,0,0,.14), 0 3px 14px 2px rgba(0,0,0,.12);
+    background: #fff;
+}
+.refiner-btn {
+    text-align: center;
+    padding-top: 3px;
+    padding-bottom: 18px;
+}
+.file-import {
+    margin-right: 14px;  
+}
+.export-btn {
+    padding-top: 10px;
+}
+.send-mail {
+    margin-left: 14px;
+}
+
+.import-resize {    
+    font-size: 26px;
+    margin-bottom: 6px;
+}
+.export-resize {
+    font-size: 20px;
+}
+
+/* Responsiveness definition */
+@media only screen and (max-width: 1440px) {
+    h1 {
+        font-size: 1.45em;
+    }
+    h2 {
+        font-size: 1.1em;
+    }
+    .thump-up {
+        font-size: 26px;
+    }     
+    .mat-paginator {
+        font-size: 14px;
+    }  
+    .file-import {
+        margin-right: 8px;
+        line-height: 22px;
+        padding: 0px 8px;
+    }
+    .export-btn {
+        padding-top: 6px;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    .send-mail {
+        margin-left: 8px;
+        padding: 0px 8px;
+        line-height: 28px;  
+        min-width: 0px;  
+    }
+    
+    .import-resize {    
+        font-size: 24px;
+        margin-bottom: 6px;
+    }
+    .export-resize {
+        font-size: 18px;
+    }      
+    .excel-export {
+        line-height: 30px;
+        padding: 0 8px;
+    }
+    .refiner-btn {
+        padding-top: 12px;
+        padding-bottom: 22px;
+    }
+    .error-message {
+        font-size: 14px;
+    }
+    .itowe-container {
+        padding-bottom: 2em;
+    }
+    .itowe-logo {
+        margin-top: 20%;
+        margin-bottom: 15%;
+    }
+}
+
+/* Responsiveness definition */
+@media only screen and (max-width: 1366px) {
+    h1 {
+        font-size: 1.39em;
+    }
+    h2 {
+        font-size: 1em;
+    }
+    .thump-up {
+        font-size: 24px;
+    }   
+    .export-btn {
+        padding-top: 6px;
+        padding-left: 8px;
+        padding-right: 8px;
+    }  
+    .mat-paginator {
+        font-size: 13px;
+    }          
+    .mat-form-field {
+        width: 170px !important;
+    }
+    .error-message {
+        font-size: 13px;
+    }
+    .itowe-logo {
+        margin-top: 26%;
+        margin-bottom: 20%;
+    }
+}

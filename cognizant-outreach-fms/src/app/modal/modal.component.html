@@ -1,0 +1,27 @@
+<h1 mat-dialog-title>Hi {{data.name | titlecase}}</h1>
+<div *ngIf="data.name !== 'Associate'" mat-dialog-content>
+  <p>{{data.message}}</p>
+  <mat-form-field class="example-full-width">
+      <input [ngClass]="isSuccess ? 'quote' : 'error-message'" matInput readonly [(ngModel)]="statusMessage" name="status">
+      <input hidden type="file" #fileInput (change)="getFilePath($event)">
+      <mat-icon (click)="fileInput.click()" matSuffix>attachment</mat-icon>
+  </mat-form-field>  
+  <p><b>Note:</b>
+    1) OutReach Event Information.xlsx 2) Outreach Events Summary.xlsx   
+  </p>
+  <p>
+    3) Volunteer_Enrollment Details_Not_Attend.xlsx
+    4) Volunteer_Enrollment Details_Unregistered.xlsx
+  </p>
+</div>
+<div *ngIf="data.name === 'Associate'" mat-dialog-content>
+    <p>{{data.message}}</p>   
+    <p><b>Note:</b>
+      We have something for you! Are you intersted?
+    </p>
+  </div>
+<div mat-dialog-actions class="">
+  <button *ngIf="data.name != 'Associate'" mat-raised-button color="" (click)="onNoClick()">No Thanks</button>
+  <button *ngIf="data.name != 'Associate'" mat-raised-button color="primary" [disabled]="!isSuccess" [mat-dialog-close]="status" cdkFocusInitial>Okay</button>
+  <button *ngIf="data.name == 'Associate'" mat-raised-button color="primary" [mat-dialog-close]="status" cdkFocusInitial>Yep, Go ahead!</button>
+</div>

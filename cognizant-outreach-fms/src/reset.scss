@@ -1,0 +1,98 @@
+* {
+    &:active,
+    :focus {
+      outline: none !important;  // 1
+    }
+  }
+  
+  label {
+    margin-bottom: 0; // 2
+  }
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    -moz-appearance: none;    
+    margin: 0; 
+}
+    
+  a:not(.mat-button):not(.mat-raised-button):not(.mat-fab):not(.mat-mini-fab):not([mat-list-item]) {
+      color: #3f51b5; // 3
+    }
+
+    .mat-form-field-infix {
+        font-size: 20px !important;
+      }
+    
+      .mat-error {
+        font-size: 15px !important;
+      }
+
+      .mat-button-wrapper {
+          vertical-align: middle;
+
+      }
+      .mat-radio-group{
+        display: grid;
+      }
+       .mat-radio-button {
+        vertical-align: super;
+        padding-right: 20px;
+        font-size: 1.5em;
+        color: #2ec866 !important;
+
+        label {
+          padding-bottom: 20px;
+        }
+      }   
+      
+      .mat-header-cell {
+        color: #3f51b5 !important;
+        font-size: 16px;
+      }
+
+      .mat-paginator {
+        background: none;
+        color: #3f51b5 !important;
+        font-size: 16px;
+      }
+
+      tr.mat-header-row {
+        background: #0033A0;
+      }     
+
+      .mat-sort-header-container {
+        color: #ffff;
+      }
+
+      .mat-sort-header-arrow {
+        color: #ffff;
+      }
+
+      .mat-raised-button.mat-primary {
+        background: #2ec866 !important;
+      }
+
+
+/* Responsiveness definition */      
+@media only screen and (max-width: 1440px) { 
+  .mat-paginator-container {
+    min-height: 0px !important;
+    padding: 0 4px !important;
+  }
+  .mat-button-wrapper {
+    font-size: 12px;
+  }
+}
+
+/* Responsiveness definition */      
+@media only screen and (max-width: 1366px) { 
+  .mat-paginator-page-size-label {
+   margin: 0px !important;
+  }  
+  .mat-button-wrapper {
+    font-size: 11px;
+  }  
+}
+
+   

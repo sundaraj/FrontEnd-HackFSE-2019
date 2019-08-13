@@ -1,0 +1,95 @@
+.mat-form-field {
+    display: inline;
+}
+
+.textarea.mat-input-element.cdk-textarea-autosize {
+    resize: auto !important;
+}
+
+.section-splitter {
+    border-left: 1px solid #800080 !important;   
+}
+.very-good {
+    color: #FF69B4;
+}
+.good {
+    color: #2ec866;
+}
+.netural {
+    color: #9400D3 ;
+}
+.not-bad {
+    color: #00bfff ;
+}
+.bad {
+    color: #FF0000;
+}
+
+/* Responsiveness definition */
+@media only screen and (max-width: 1440px) {
+    h1 {
+        font-size: 1.45em;
+    }
+    h2 {
+        font-size: 1.1em;
+    }
+    .thump-up {
+        font-size: 26px;
+    }       
+    .text-center {
+        padding-top: 30px;
+    }
+    .very-good {
+       font-size: 110px;
+    }
+    .good {
+        font-size: 110px;
+    }
+    .netural {
+        font-size: 110px;
+    }
+    .not-bad {
+        font-size: 110px;
+    }
+    .bad {
+        font-size: 110px;
+    }
+    .mat-radio-button {
+        font-size: 1.2em;
+    }
+}
+
+/* Responsiveness definition */
+@media only screen and (max-width: 1366px) {
+    h1 {
+        font-size: 1.4em;
+    }
+    h2 {
+        font-size: 1em;
+    }
+    .thump-up {
+        font-size: 24px;
+    }       
+    .text-center {
+        padding-top: 30px;
+    }
+    .very-good {
+       font-size: 100px;
+    }
+    .good {
+        font-size: 100px;
+    }
+    .netural {
+        font-size: 100px;
+    }
+    .not-bad {
+        font-size: 100px;
+    }
+    .bad {
+        font-size: 100px;
+    }
+    .mat-radio-button {
+        font-size: 1.2em;
+    }
+}
+

@@ -1,0 +1,319 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import "variables";
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/mixins";
+@import "~bootstrap/scss/reboot";
+@import "~bootstrap/scss/grid";
+@import "~bootstrap/scss/carousel";
+@import "~bootstrap/scss/utilities";
+@import "reset";
+
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+body {
+    font-family: Roboto,"Helvetica Neue Light","Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif;
+    margin: 0;
+}
+
+.row {
+    margin: 0;
+}
+
+.splitter {
+    width: 50%;
+}
+
+.loding-indicator {
+    margin-top: 50px;
+    display: table;
+    position: absolute;    
+    height: 100%;     
+    width: 100%;
+}
+
+.align-center {    
+    display: table-cell;
+    vertical-align: middle;
+}    
+
+.line {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.title {
+    color: $link-color !important;
+    //padding-top: 0px !important;
+    padding-bottom: 10px !important;
+}
+
+.title-text {
+    font-size: 2em;
+    text-transform: capitalize;
+    text-align: center !important;
+    padding-top: 30px !important;
+}
+
+.center-align {
+    text-align: center;
+}
+
+.container {      
+    top: 0;
+    padding: 0px;
+    position: fixed;    
+    max-width: 100%;   
+}
+
+.app-container {    
+    padding-top: 30px; 
+    padding-bottom: 30px;
+    // min-height: 1024px;
+}
+
+.empty-container {
+    min-height: 916px;
+    padding: 50px;
+}
+
+.theme {
+    background: $brand-body-background;
+}
+
+.thank-card {
+    padding-top: 20px !important;
+    padding-bottom: 20px !important;
+    background: $brand-body-background;
+}
+
+.spacing {
+    padding-top: 30px;
+}
+
+.login-container {
+    display: table;
+    position: absolute;    
+    height: 100%;     
+    width: 100%;
+}
+
+.login-page {
+    display: table-cell;
+    vertical-align: bottom;
+}
+
+.error-message {
+    color: $error-message !important;
+}
+
+.login {
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    min-height: 338px;
+    min-width: 320px;    
+    max-width: 440px;   
+    padding: 44px;
+    margin-bottom: 28px;
+    background-color: #fff;
+    -webkit-box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    -moz-box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    overflow: hidden;
+
+    .mat-button {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;   
+        margin-top: 10px; 
+        color: #ff4081;        
+    }
+}
+
+.app-login-section1 {   
+    background-image: url('./assets/welcome-banner.jpg');
+    background-repeat: no-repeat,no-repeat;
+    background-position: center top;
+    background-size: cover,cover;   
+    height: 499px;  
+    width: 100%;   
+    margin: 0;      
+}
+.app-login-section2 {   
+    background-image: url('./assets/cognizant-25years.jpg');    
+    background-repeat: no-repeat,no-repeat;
+    background-position: center top;
+    background-size: cover,cover;
+    height: 470px;    
+    width: 100%;   
+    margin: 0;          
+}
+.app-login-section3 {   
+    background-image: url('./assets/frank_ceo.jpg');
+    background-repeat: no-repeat,no-repeat;
+    background-position: center top;
+    background-size: cover,cover;
+    height: 470px;    
+    width: 100%;   
+    margin: 0;      
+}
+
+.outreach-logo {
+    display: block;   
+    width: 200px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.itowe-logo {
+    display: block;   
+    width: 100%;   
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.thump-up {
+    padding-left: 10px;
+    font-size: 34px;
+    vertical-align: text-top;
+}
+
+app-header {
+    position: fixed;
+    color: #fff;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
+}
+
+.app-nav {     
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;   
+    background-color: $brand-background;
+    min-height: 52.875px;
+}
+
+.brand-text {
+    color: $brand-text;
+    padding-left: 10px;
+}
+
+.flex-spacer {
+    flex-grow: 1;
+}
+.user-profile {
+    width: 40px;
+}
+.cdk-overlay-container {
+    top: 1%
+}
+
+.left-section {
+   border-bottom:7px solid #fff; 
+   background: $brand-color;      
+}
+.right-section {
+    padding: 0%; 
+}
+.fit-page {         
+    background-size: cover;
+    width: 100%;
+}
+.fit-image {
+   width: 100%;
+   padding-left: 20px;
+   padding-right: 20px;
+}
+.text-center {
+    color: $brand-text;
+    padding-top: 20px;    
+}
+.quote-fit {
+    margin-top: 0.5rem;
+}
+.ceo-quote-fit {
+    padding-top: 10px !important;
+}
+.quote {
+    color: $link-color !important;
+}
+.ceo-quote {
+    color: $brand-pink !important;
+}
+.normal-quote {
+    color: $brand-color !important;
+}
+.outreach-play {
+    -webkit-transition: background-color ease .5s;
+    -o-transition: background-color ease .5s;
+    transition: background-color ease .5s;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: #fff;
+    font-weight: 700;
+    background-color: rgba(0,0,0,.2);
+    z-index: 1;
+    text-align: center;
+    border: 0;
+    border-bottom:7px solid #fff; 
+}
+.play-button {
+    position: relative;
+    z-index: 1;
+    background-image: url(./assets/play-now.svg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 99%;
+    height: 150px;
+    width: 150px;
+    margin: 0 auto;
+    opacity: 1;
+    transition: opacity .3s ease-in-out;
+    background-color: rgba(0,0,0,.35);
+    border-radius: 50%;
+}
+#our-new-ceo {
+    iframe {
+        border: 0px solid;
+    }   
+    .left-section {
+        border-bottom:6px solid #fff; 
+        background: $brand-color;      
+     }
+    .quote {
+        padding-top: 0px !important;
+    }
+}
+.icon-size {    
+    font-size: 150px;
+    height: auto !important;
+    width: auto !important;    
+}
+
+textarea {
+    color: #2ec866 !important;
+    max-height: 245px !important;
+    overflow: hidden !important;
+    font-size: 1.2em !important;
+}
+
+textarea.mat-input-element.cdk-textarea-autosize {
+    resize: auto !important;
+}
+
+.upload-image {
+    height: 100%;
+    width: 100%;
+}
+
+.email-success {
+    color: $brand-title;
+}
+
